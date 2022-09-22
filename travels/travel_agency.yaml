@@ -52,6 +52,8 @@ spec:
       version: v1
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
       labels:
         app: mysqldb
         version: v1
@@ -92,6 +94,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
         proxy.istio.io/config: |
           tracing:
@@ -178,6 +181,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
         proxy.istio.io/config: |
           tracing:
@@ -251,6 +255,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
         proxy.istio.io/config: |
           tracing:
@@ -337,6 +342,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
         proxy.istio.io/config: |
           tracing:
@@ -423,6 +429,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
       labels:
         app: insurances
@@ -491,6 +498,7 @@ spec:
   template:
     metadata:
       annotations:
+        sidecar.istio.io/inject: "true"
         readiness.status.sidecar.istio.io/applicationPorts: ""
         proxy.istio.io/config: |
           tracing:

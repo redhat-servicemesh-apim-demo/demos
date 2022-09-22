@@ -1,0 +1,19 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: travels
+  namespace: travel-agency
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - travel-agency/travels-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /travels
+      route:
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 100
