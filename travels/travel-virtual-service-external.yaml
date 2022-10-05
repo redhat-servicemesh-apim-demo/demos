@@ -1,7 +1,7 @@
 kind: VirtualService
 apiVersion: networking.istio.io/v1alpha3
 metadata:
-  name: travels
+  name: travels-external
   namespace: travel-agency
 spec:
   hosts:
@@ -15,5 +15,5 @@ spec:
       route:
         - destination:
             host: travels.travel-agency.svc.cluster.local
-            subset: v1
+            subset: v2
           weight: 100
