@@ -1,0 +1,44 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: travels-internal
+  namespace: travel-agency
+spec:
+  hosts:
+    - travels.travel-agency.svc.cluster.local
+  http:
+    - match:
+        - headers:
+            portal:
+              exact: travels.uk
+      route:
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 100
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v2
+          weight: 0
+    - match:
+        - headers:
+            portal:
+              exact: viaggi.it
+      route:
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 100
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v2
+          weight: 0
+    - route:
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 100
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v2
+          weight: 0
