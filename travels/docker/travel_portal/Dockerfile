@@ -1,6 +1,6 @@
-FROM centos:centos7
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4
 
-LABEL maintainer="ponce.ballesteros@gmail.com"
+LABEL maintainer="ponce.ballesteros@gmail.com, jaya@redhat.com"
 
 ENV TRAVEL_HOME=/opt/travel_portal \
     PATH=$TRAVEL_HOME:$PATH
