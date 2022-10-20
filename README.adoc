@@ -1,3 +1,3 @@
-= Kiali Demos Repo
+= Kiali Demos Repo - Travels app
 
-A repo with sample applications to demo microservices scenarios based on Istio and managed by Kiali
+This repo contains only the Travels app from the original Istio Demos.

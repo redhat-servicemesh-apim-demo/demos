@@ -85,8 +85,8 @@ var (
 	travelsAgencyService = "http://localhost:8090/travels"
 
 	//setup vars for the 3scale-istio introduction
-	apiKey = ''
-	apiValue = ''
+	apiKey = ""
+	apiValue = ""
 )
 
 func setup() {
