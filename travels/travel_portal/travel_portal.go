@@ -85,7 +85,7 @@ var (
 	travelsAgencyService = "http://localhost:8090/travels"
 
 	//setup vars for the 3scale-istio introduction
-	apiKey = ""
+	apiKey = "user_key"
 	apiValue = ""
 )
 
@@ -428,10 +428,14 @@ func main() {
 		for {
 			device, user, travel := calculateRequestType()
 
-			travelsAgencyService = travelsAgencyService + "/travels" + "?api_key=" + apiValue
-			glog.Infof("URL travelsAgencyService  '[%s]' ", travelsAgencyService)
+			var _travelUrl = travelsAgencyService + "/travels"
+			if(apiValue!="") {
+				_travelUrl = travelsAgencyService + "/travels?" + apiKey + "=" + apiValue
 
-			request, _ := http.NewRequest("GET", travelsAgencyService, nil)
+			}
+			glog.Infof("URL travelsAgencyService  URL'[%s]' ",  _travelUrl)
+			
+			request, _ := http.NewRequest("GET",  _travelUrl, nil)
 			request.Header.Set("portal", portalName)
 			request.Header.Set("device", device)
 			request.Header.Set("user", user)
@@ -453,10 +457,15 @@ func main() {
 				city := cities[i].City
 
 				
-				travelsAgencyService = travelsAgencyService +  "/travels/" + city + "?api_key=" + apiValue
-				glog.Infof("URL travelsAgencyService  '[%s]' ", travelsAgencyService)
-		
-				request, _ := http.NewRequest("GET", travelsAgencyService, nil)
+
+				var cityURL = travelsAgencyService + "/travels/" + city 
+				if(apiValue!="") {
+					cityURL = travelsAgencyService + "/travels/" + city + "?" + apiKey + "=" + apiValue
+	
+				}
+				glog.Infof("URL travelsAgencyService  cityURL'[%s]' ",  cityURL)
+
+				request, _ := http.NewRequest("GET", cityURL, nil)
 				request.Header.Set("portal", portalName)
 				request.Header.Set("device", device)
 				request.Header.Set("user", user)
